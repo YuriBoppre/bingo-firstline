@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-soccer-dark text-white;
+  }
+}
+
+@layer utilities {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+img {
+  background: transparent !important;
+}
+
+span[style*="position: relative"],
+span[style*="display: block"],
+div[style*="position: relative"] {
+  background: transparent !important;
+}
+
+span[style*="position: relative"] img,
+span[style*="display: block"] img,
+div[style*="position: relative"] img {
+  background: transparent !important;
+}
+
+img[src*="logo_master"] {
+  background: transparent !important;
+}
+
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+

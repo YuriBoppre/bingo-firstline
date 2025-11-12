@@ -1,0 +1,37 @@
+<svg width="240" height="280" viewBox="0 0 240 280" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield shape with blue outline -->
+  <path d="M 30 20 Q 30 10 40 10 L 200 10 Q 210 10 210 20 L 210 240 Q 210 260 190 270 L 120 280 L 50 270 Q 30 260 30 240 Z" 
+        fill="white" stroke="#1e40af" stroke-width="4"/>
+  
+  <!-- Top text: MASTER -->
+  <text x="120" y="40" font-family="serif" font-size="22" font-weight="bold" fill="#1e40af" text-anchor="middle">MASTER</text>
+  
+  <!-- Vertical stripes behind the ball -->
+  <line x1="70" y1="60" x2="70" y2="200" stroke="#1e40af" stroke-width="5"/>
+  <line x1="90" y1="60" x2="90" y2="200" stroke="#1e40af" stroke-width="4"/>
+  <line x1="120" y1="60" x2="120" y2="200" stroke="#1e40af" stroke-width="6"/>
+  <line x1="150" y1="60" x2="150" y2="200" stroke="#1e40af" stroke-width="4"/>
+  <line x1="170" y1="60" x2="170" y2="200" stroke="#1e40af" stroke-width="5"/>
+  
+  <!-- Soccer ball circle -->
+  <circle cx="120" cy="150" r="50" fill="white" stroke="#1e40af" stroke-width="2.5"/>
+  
+  <!-- Soccer ball pattern - hexagons and pentagons -->
+  <!-- Central pentagon -->
+  <path d="M 120 110 L 135 118 L 130 135 L 110 135 L 105 118 Z" fill="none" stroke="#1e40af" stroke-width="1.5"/>
+  <!-- Hexagons around -->
+  <path d="M 135 118 L 148 125 L 145 140 L 130 145 L 120 135 L 130 135 Z" fill="none" stroke="#1e40af" stroke-width="1.5"/>
+  <path d="M 105 118 L 92 125 L 95 140 L 110 145 L 120 135 L 110 135 Z" fill="none" stroke="#1e40af" stroke-width="1.5"/>
+  <path d="M 130 135 L 145 140 L 140 155 L 125 160 L 115 150 L 120 145 Z" fill="none" stroke="#1e40af" stroke-width="1.5"/>
+  <path d="M 110 135 L 95 140 L 100 155 L 115 160 L 125 150 L 120 145 Z" fill="none" stroke="#1e40af" stroke-width="1.5"/>
+  
+  <!-- Inner circle with year 1988 -->
+  <circle cx="120" cy="150" r="40" fill="none" stroke="#1e40af" stroke-width="2"/>
+  <text x="120" y="158" font-family="serif" font-size="18" font-weight="bold" fill="#1e40af" text-anchor="middle">1988</text>
+  
+  <!-- Bottom text: 1ª LINHA (curved along bottom) -->
+  <text x="120" y="250" font-family="serif" font-size="16" font-weight="bold" fill="#1e40af" text-anchor="middle">
+    <tspan font-size="12" dy="-2">1ª</tspan>
+    <tspan dx="5">LINHA</tspan>
+  </text>
+</svg>
