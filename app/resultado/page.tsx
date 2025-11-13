@@ -2,33 +2,18 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { subscribeToBingoData } from '@/lib/bingoService'
 
 export default function ViewPage() {
   const [drawnNumbers, setDrawnNumbers] = useState<string[]>([])
 
   useEffect(() => {
-    const updateNumbers = () => {
-      const saved = localStorage.getItem('bingo-history')
-      if (saved) {
-        try {
-          const parsed = JSON.parse(saved)
-          const numbers = parsed.numbers || []
-          setDrawnNumbers(numbers)
-        } catch (e) {
-          console.error('Erro ao carregar histórico:', e)
-        }
-      }
-    }
-
-    updateNumbers()
-
-    const interval = setInterval(updateNumbers, 500)
-
-    window.addEventListener('storage', updateNumbers)
+    const unsubscribe = subscribeToBingoData((data) => {
+      setDrawnNumbers(data.numbers || [])
+    })
 
     return () => {
-      clearInterval(interval)
-      window.removeEventListener('storage', updateNumbers)
+      unsubscribe()
     }
   }, [])
 
@@ -76,7 +61,7 @@ export default function ViewPage() {
           <div className="grid grid-cols-5 gap-3 h-full">
             {['B', 'I', 'N', 'G', 'O'].map((letter) => {
               const letterNumbers = groupedNumbers[letter] || []
-              
+
               return (
                 <div key={letter} className="flex flex-col h-full border-2 border-soccer-blue/50 rounded-lg bg-soccer-dark/40 backdrop-blur-sm overflow-hidden">
                   <div className="bg-gradient-to-r from-soccer-blue to-blue-600 py-2 px-2 flex-shrink-0">

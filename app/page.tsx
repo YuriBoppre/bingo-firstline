@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
+import { loadBingoData, saveBingoData, subscribeToBingoData } from '@/lib/bingoService'
 
 export default function Home() {
   const [number, setNumber] = useState<string>('')
@@ -10,27 +11,41 @@ export default function Home() {
   const [drawnNumbers, setDrawnNumbers] = useState<string[]>([])
   const [isAnimating, setIsAnimating] = useState<boolean>(false)
   const [showAllModal, setShowAllModal] = useState<boolean>(false)
+  const [isInitialLoad, setIsInitialLoad] = useState<boolean>(true)
   const inputRef = useRef<HTMLInputElement>(null)
   const announcementRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const saved = localStorage.getItem('bingo-history')
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved)
-        setDrawnNumbers(parsed.numbers || [])
-      } catch (e) {
-        console.error('Erro ao carregar histórico:', e)
+    let isMounted = true
+    let initialLoadComplete = false
+
+    loadBingoData().then((data) => {
+      if (isMounted) {
+        setDrawnNumbers(data.numbers || [])
+        initialLoadComplete = true
+        setIsInitialLoad(false)
       }
+    })
+
+    const unsubscribe = subscribeToBingoData((data) => {
+      if (isMounted && initialLoadComplete) {
+        setDrawnNumbers(data.numbers || [])
+      }
+    })
+
+    return () => {
+      isMounted = false
+      unsubscribe()
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('bingo-history', JSON.stringify({
-      numbers: drawnNumbers
-    }))
-    window.dispatchEvent(new Event('storage'))
-  }, [drawnNumbers])
+    if (!isInitialLoad && typeof window !== 'undefined') {
+      saveBingoData({ numbers: drawnNumbers }).catch((error) => {
+        console.error('Erro ao salvar no Firebase:', error)
+      })
+    }
+  }, [drawnNumbers, isInitialLoad])
 
   useEffect(() => {
     if (showAllModal) {
@@ -273,16 +288,16 @@ export default function Home() {
                     const letterNumbers = drawnNumbers
                       .filter(num => num.startsWith(letter))
                       .map(num => num.substring(1))
-                    
+
                     return (
                       <div key={letter} className="space-y-3">
                         <div className="flex items-center gap-4 flex-wrap">
                           <div className="w-14 h-14 flex items-center justify-center bg-gradient-to-br from-soccer-gold to-yellow-500 rounded-full text-soccer-dark font-bold text-xl shadow-lg flex-shrink-0">
                             {letter}
                           </div>
-                          
+
                           <div className="h-12 w-px bg-soccer-blue/40 flex-shrink-0"></div>
-                          
+
                           <div className="flex flex-wrap gap-2 flex-1">
                             {letterNumbers.length > 0 ? (
                               letterNumbers.map((num, idx) => (
@@ -301,7 +316,7 @@ export default function Home() {
                             )}
                           </div>
                         </div>
-                        
+
                         {letter !== 'O' && (
                           <div className="h-px bg-soccer-blue/20"></div>
                         )}
