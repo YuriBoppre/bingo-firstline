@@ -139,11 +139,8 @@ export default function Home() {
       <div className="relative z-10 flex flex-col h-full overflow-hidden">
         <header className="w-full py-2 px-3 sm:py-3 sm:px-4 bg-soccer-dark/80 backdrop-blur-sm border-b-2 border-soccer-blue flex-shrink-0">
           <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-soccer-gold mb-0.5 sm:mb-1">
-              BINGO ASSOCIAÇÃO
-            </h1>
             <p className="text-[10px] sm:text-xs md:text-sm text-blue-300">
-              Master 1ª Linha - 1988
+              Bingo - Master 1ª Linha - 1988
             </p>
           </div>
         </header>
