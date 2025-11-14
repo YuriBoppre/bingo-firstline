@@ -82,7 +82,7 @@ export default function ViewPage() {
                               key={`${letter}-${num}-${idx}`}
                               className="flex items-center justify-center"
                             >
-                              <div className="w-15 h-15 md:w-16 md:h-16 flex items-center justify-center bg-gradient-to-br from-soccer-gold to-yellow-500 rounded-full text-soccer-dark font-bold text-lg md:text-2xl shadow-sm" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+                              <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-gradient-to-br from-soccer-gold to-yellow-500 rounded-full text-soccer-dark font-black text-3xl md:text-4xl shadow-md" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
                                 {numberOnly}
                               </div>
                             </div>
