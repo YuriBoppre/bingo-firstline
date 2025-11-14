@@ -48,11 +48,8 @@ export default function ViewPage() {
       <div className="relative z-10 flex flex-col h-full overflow-hidden">
         <header className="w-full py-4 px-6 bg-soccer-dark/80 backdrop-blur-sm border-b-2 border-soccer-blue flex-shrink-0">
           <div className="text-center">
-            <h1 className="text-2xl md:text-3xl font-bold text-soccer-gold mb-1">
-              BINGO ASSOCIAÇÃO
-            </h1>
             <p className="text-sm md:text-base text-blue-300">
-              Master 1ª Linha - 1988
+              Bingo - Master 1ª Linha - 1988
             </p>
           </div>
         </header>
@@ -85,7 +82,7 @@ export default function ViewPage() {
                               key={`${letter}-${num}-${idx}`}
                               className="flex items-center justify-center"
                             >
-                              <div className="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center bg-gradient-to-br from-soccer-gold to-yellow-500 rounded-full text-soccer-dark font-bold text-xs md:text-sm shadow-sm" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
+                              <div className="w-15 h-15 md:w-16 md:h-16 flex items-center justify-center bg-gradient-to-br from-soccer-gold to-yellow-500 rounded-full text-soccer-dark font-bold text-lg md:text-2xl shadow-sm" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.3)' }}>
                                 {numberOnly}
                               </div>
                             </div>
